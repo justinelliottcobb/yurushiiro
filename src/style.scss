@@ -1,0 +1,203 @@
+// Traditional Japanese Colors
+// Generated from traditional color definitions
+
+// Color Series Maps
+$japanese-colors: (
+  "red-violet": (
+    "ikkonzome": #f08f90,
+    "momo-iro": #f47983,
+    "kobai-iro": #db5a6b,
+    "nakabeni": #c93756,
+    "sakura-iro": #fcc9b9,
+    "arazome": #ffb3a7,
+    "usubeni": #f2666c,
+  ),
+  "red": (
+    "tokiha-iro": #f58f84,
+    "sakuranezumi": #ac8181,
+    "choshun-iro": #b95754,
+    "karakurenai": #c91f37,
+    "enji-iro": #9d2933,
+    "kokiake": #7b3b3a,
+    "jinzamomi": #f7665a,
+    "mizugaki": #b56c60,
+    "umenezumi": #97645a,
+    "suoko": #a24f46,
+    "akabeni": #c3272b,
+    "shinshu": #8f1d21,
+    "azuki-iro": #672422,
+    "ginshu": #bc2d29,
+    "ebicha": #5e2824,
+    "kiriume": #8b352d,
+  ),
+  "yellow-red": (
+    "kurumizome": #9f7462,
+    "kaba-iro": #b64925,
+    "korozen": #592b1f,
+    "kogecha": #351f19,
+    "kokikuchinashi": #f57f4f,
+    "araigaki": #ec8254,
+    "taisha-iro": #9f5233,
+  ),
+  "yellow": (
+    "asagi": #f7bb7d,
+    "yamabuki-iro": #ffa400,
+    "tamago-iro": #ffa631,
+    "hajizome": #e08a1e,
+    "yamabukicha": #cb7e1f,
+    "kuwazome": #c57f2e,
+    "namakabe-iro": #785e49,
+    "kuchinashi": #ffb95a,
+  ),
+  "yellow-green": (
+    "hiwa-iro": #bda928,
+    "aoshirotsurubami": #bba46d,
+    "yanagicha": #9c8a4d,
+    "rikancha": #534a32,
+    "aikobicha": #473f2d,
+    "koke-iro": #8b7d3a,
+    "miru-iro": #524b2a,
+  ),
+  "green-blue": (
+    "usuao": #8c9c76,
+    "wakatake-iro": #6b9362,
+    "yanaginezumi": #817b69,
+    "oitake-iro": #5e644f,
+    "chitosemidori": #374231,
+    "midori": #2a603b,
+    "byakuroku": #a5ba93,
+    "sabiseiji": #898a74,
+    "rokusho": #407a52,
+  ),
+  "blue": (
+    "mizu-iro": #86aba5,
+    "sabiasagi": #6a7f7a,
+    "kamenozoki": #c6c2b6,
+    "asagi-iro": #48929b,
+    "shinbashi-iro": #006c7f,
+    "sabionando": #455859,
+    "ai-iro": #264348,
+    "ruri-iro": #1f4788,
+    "konjo-iro": #003171,
+  ),
+  "violet": (
+    "fujimurasaki": #875f9a,
+    "kikyo-iro": #5d3f6a,
+    "shion-iro": #976e9a,
+    "messhi": #3f313a,
+    "shikon": #2b2028,
+    "kokimurasaki": #3a243b,
+    "sumire-iro": #5b3256,
+    "murasaki": #4f284b,
+    "ayame-iro": #763568,
+  ),
+  "achromatic": (
+    "shironeri": #ffddca,
+    "shironezumi": #b9a193,
+    "ginnezumi": #97867c,
+    "sunezumi": #6e5f57,
+    "dobunezumi": #4b3c39,
+    "aisumicha": #393432,
+    "sumi-iro": #27221f,
+    "kokushoku": #171412,
+    "aijiro": #ebf6f7,
+  ),
+);
+
+// Root Variables
+:root {
+  @each $series-name, $colors in $japanese-colors {
+    @each $name, $hex in $colors {
+      --#{$series-name}-#{$name}: #{$hex};
+    }
+  }
+}
+
+// Utility Classes
+@each $series-name, $colors in $japanese-colors {
+  @each $name, $hex in $colors {
+    .bg-#{$series-name}-#{$name} {
+      background-color: $hex;
+    }
+
+    .text-#{$series-name}-#{$name} {
+      color: $hex;
+    }
+
+    .border-#{$series-name}-#{$name} {
+      border-color: $hex;
+    }
+  }
+}
+
+// Base Styles
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Color Swatch Styles
+.color-series {
+  margin-bottom: 40px;
+}
+
+.series-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ddd;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.color-swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.color-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  border-radius: 0 0 8px 8px;
+  font-size: 12px;
+}
+
+.color-name {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.color-romaji {
+  margin-bottom: 2px;
+}
+
+.color-hex {
+  font-family: monospace;
+  color: #666;
+}
